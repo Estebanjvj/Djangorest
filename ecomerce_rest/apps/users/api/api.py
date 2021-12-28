@@ -12,10 +12,32 @@ def user_api_view(request):
         users_serializers = UserSerializer(users, many=True)
         return Response(users_serializers.data)
 
-    if request.method == 'POST':
+    elif request.method == 'POST':
         user_serializer = UserSerializer(data=request.data)
         if user_serializer.is_valid():
             user_serializer.save()
             return Response(user_serializer.data)
         else:
             return Response(user_serializer.errors)
+
+@api_view(['GET','PUT','DELETE'])
+def user_detail_api_view(request, pk=None):
+
+    if request.method == 'GET':
+        user = User.objects.filter(id=pk).first()
+        user_serializer = UserSerializer(user)
+        return Response(user_serializer.data)
+
+    elif request.method == 'PUT':
+        user = User.objects.filter(id=pk).first()
+        user_serializer = UserSerializer(user, data=request.data)
+        if user_serializer.is_valid():
+            user_serializer.save()
+            return Response(user_serializer.data)
+        else:
+            return Response(user_serializer.errors)
+
+    elif request.method == 'DELETE':
+        user = User.objects.filter(id=pk).first()
+        user.delete()
+        return Response('Eliminado')
