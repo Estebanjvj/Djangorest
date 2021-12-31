@@ -3,14 +3,25 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 from apps.users.models import User
-from apps.users.api.serializers import UserSerializer
+from apps.users.api.serializers import UserSerializer, TestUserSerializer
 
 @api_view(['GET','POST'])
 def user_api_view(request):
 
+    # List
     if request.method == 'GET':
         users = User.objects.all()
         users_serializers = UserSerializer(users, many=True)
+
+        test_data = {
+            'name': 'develop',
+            'email': 'develop@email.com'
+        }
+        test_user = TestUserSerializer(data=test_data) #context=test_data con esto como parámetro podemos validar todo en los métodos invididuales
+        if test_user.is_valid():
+            print(test_user)
+        else:
+            print(test_user.errors)
         return Response(users_serializers.data, status=status.HTTP_200_OK)
 
     elif request.method == 'POST':
