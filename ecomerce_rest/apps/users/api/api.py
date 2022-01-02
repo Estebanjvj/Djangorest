@@ -15,11 +15,13 @@ def user_api_view(request):
 
         test_data = {
             'name': 'develop',
-            'email': 'develop@email.com'
+            'email': 'test@email.com'
         }
         test_user = TestUserSerializer(data=test_data) #context=test_data con esto como parámetro podemos validar todo en los métodos invididuales
         if test_user.is_valid():
             print(test_user)
+            # ui = test_user.save() # Guarda en la base de datos
+            # print(ui)
         else:
             print(test_user.errors)
         return Response(users_serializers.data, status=status.HTTP_200_OK)
