@@ -40,3 +40,12 @@ class TestUserSerializer(serializers.Serializer):
     def create(self, validated_data):
         print(validated_data)
         return User.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        instance.name = validated_data.get('name', instance.name)
+        instance.email = validated_data.get('email', instance.email)
+        instance.save() # Este save está dentro del modelo
+        return instance
+
+    # def save(self):
+    #     send_email(self.validated_data) # No guarda en la base de datos

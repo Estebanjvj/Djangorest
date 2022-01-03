@@ -12,18 +12,6 @@ def user_api_view(request):
     if request.method == 'GET':
         users = User.objects.all()
         users_serializers = UserSerializer(users, many=True)
-
-        test_data = {
-            'name': 'develop',
-            'email': 'test@email.com'
-        }
-        test_user = TestUserSerializer(data=test_data) #context=test_data con esto como parámetro podemos validar todo en los métodos invididuales
-        if test_user.is_valid():
-            print(test_user)
-            # ui = test_user.save() # Guarda en la base de datos
-            # print(ui)
-        else:
-            print(test_user.errors)
         return Response(users_serializers.data, status=status.HTTP_200_OK)
 
     elif request.method == 'POST':
@@ -42,9 +30,10 @@ def user_detail_api_view(request, pk=None):
             user_serializer = UserSerializer(user)
             return Response(user_serializer.data, status=status.HTTP_200_OK)
 
+        # Update
         elif request.method == 'PUT':
 
-            user_serializer = UserSerializer(user, data=request.data)
+            user_serializer = TestUserSerializer(user, data=request.data)
             if user_serializer.is_valid():
                 user_serializer.save()
                 return Response(user_serializer.data, status=status.HTTP_200_OK)
