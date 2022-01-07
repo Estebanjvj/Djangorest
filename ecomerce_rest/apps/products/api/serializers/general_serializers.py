@@ -6,14 +6,14 @@ class MeasureUnitSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = MeasureUnit
-        exclude = ('status',)
+        exclude = ('status','created_date','modificated_date','deleted_date')
 class CategoryProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CategoryProduct
-        exclude = ('status',)
+        exclude = ('status','created_date','modificated_date','deleted_date')
 class IndicatorSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Indicator
-        exclude = ('status',)
+        exclude = ('status','created_date','modificated_date','deleted_date')
