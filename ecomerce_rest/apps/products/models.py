@@ -24,7 +24,7 @@ class MeasureUnit(BaseModel):
         verbose_name_plural = 'Unidades de medida'
 
     def __str__(self):
-        return f'Unidad: {self.description}'
+        return f'Id:{self.id} - {self.description}'
 
 class CategoryProduct(BaseModel):
     """Clase para unidad de medida."""
@@ -46,7 +46,7 @@ class CategoryProduct(BaseModel):
         verbose_name_plural = 'Categorías de productos'
 
     def __str__(self):
-        return f'Categoría: {self.description}'
+        return f'Id:{self.id} - {self.description}'
 
 class Indicator(BaseModel):
     """Clase para un indicador."""
