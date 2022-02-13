@@ -4,7 +4,8 @@ from apps.products.api.views.product_views import (
     ProductListAPIView,
     ProductCreateAPIView,
     ProductRetrieveApiView,
-    ProductDestroyAPIView
+    ProductDestroyAPIView,
+    ProductUpdateAPIView
 )
 
 urlpatterns = [
@@ -14,5 +15,6 @@ urlpatterns = [
     path('product/list/',ProductListAPIView.as_view(), name='product_list'),
     path('product/create/',ProductCreateAPIView.as_view(), name='product_create'),
     path('product/retrieve/<int:pk>',ProductRetrieveApiView.as_view(), name='product_retrieve'),
-    path('product/destroy/<int:pk>',ProductDestroyAPIView.as_view(), name='product_destroy')
+    path('product/destroy/<int:pk>',ProductDestroyAPIView.as_view(), name='product_destroy'),
+    path('product/update/<int:pk>',ProductUpdateAPIView.as_view(), name='product_update')
 ]
