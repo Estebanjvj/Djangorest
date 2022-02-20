@@ -60,3 +60,18 @@ class ProductUpdateAPIView(generics.UpdateAPIView):
                 return Response(product_serializer.data, status=status.HTTP_200_OK)
             return Response(product_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         return Response({'error': 'No existe un producto con estos datos'}, status=status.HTTP_400_BAD_REQUEST)
+
+''' TODO ESTO ES OPCIONAL '''
+
+class ProductListCreateApiView(generics.ListCreateAPIView):
+    serializer_class = ProductSerializer
+    queryset = ProductSerializer.Meta.model.objects.filter(status=True)
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.serializer_class(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({'message': 'Producto creado correctamente'}, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+''' TODO ESTO ES OPCIONAL '''
