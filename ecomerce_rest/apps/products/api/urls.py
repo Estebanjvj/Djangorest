@@ -1,14 +1,14 @@
 from django.urls import path
 from apps.products.api.views.general_views import MeasureUnitListAPIView, IndicatorListAPIView, CategoryProductListAPIView
-from apps.products.api.views.product_views import (
-    # ProductListAPIView,
-    # ProductCreateAPIView,
-    # ProductRetrieveApiView,
-    # ProductDestroyAPIView,
-    # ProductUpdateAPIView,
-    ProductListCreateApiView, # Ahorrar
-    ProductRetrieveUpdateDestroyAPIView # Ahorrar
-)
+# from apps.products.api.views.product_views import (
+#     # ProductListAPIView,
+#     # ProductCreateAPIView,
+#     # ProductRetrieveApiView,
+#     # ProductDestroyAPIView,
+#     # ProductUpdateAPIView,
+#     ProductListCreateApiView, # Ahorrar
+#     ProductRetrieveUpdateDestroyAPIView # Ahorrar
+# )
 
 urlpatterns = [
     path('measure_unit/',MeasureUnitListAPIView.as_view(), name='measure_unit'),
@@ -20,6 +20,6 @@ urlpatterns = [
     # path('product/destroy/<int:pk>',ProductDestroyAPIView.as_view(), name='product_destroy'),
     # path('product/update/<int:pk>',ProductUpdateAPIView.as_view(), name='product_update'),
 
-    path('product/',ProductListCreateApiView.as_view(), name='product_list_create'), # Ahorrar
-    path('product/retrieve-update-destroy/<int:pk>',ProductRetrieveUpdateDestroyAPIView.as_view(), name='product_retrieve_update_destroy') # Ahorrar
+    # path('product/',ProductListCreateApiView.as_view(), name='product_list_create'), # Ahorrar
+    # path('product/retrieve-update-destroy/<int:pk>',ProductRetrieveUpdateDestroyAPIView.as_view(), name='product_retrieve_update_destroy') # Ahorrar
 ]
