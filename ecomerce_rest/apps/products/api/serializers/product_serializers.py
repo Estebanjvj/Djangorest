@@ -11,6 +11,7 @@ class ProductSerializer(serializers.ModelSerializer):
     # category_product = serializers.StringRelatedField() #Model.__str()
 
     class Meta:
+        # Los atributos dentro de esta clase son los que se documentan con swagger
         model = Product
         exclude = ('status','created_date','modificated_date','deleted_date')
 
