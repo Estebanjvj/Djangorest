@@ -79,3 +79,8 @@ class UserListSerializer(serializers.ModelSerializer):
 
     # def save(self):
     #     send_email(self.validated_data) # No guarda en la base de datos
+
+class UserTokenSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('username','email','name','last_name')
