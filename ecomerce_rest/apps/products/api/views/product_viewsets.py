@@ -4,6 +4,7 @@ from rest_framework import viewsets
 from rest_framework.response import Response
 
 from apps.base.api import GeneralListApiView
+from apps.users.authentiation_mixing import Authentication
 from apps.products.api.serializers.product_serializers import ProductSerializer
 '''
 class ProductListAPIView(GeneralListApiView):
@@ -109,7 +110,7 @@ class ProductRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView)
 '''
 
 ''' TODO ESTO ES LO MISMO PERO PARA AHORRAR CÓDIGO '''
-class ProductViewSet(viewsets.ModelViewSet):
+class ProductViewSet(Authentication, viewsets.ModelViewSet):
     serializer_class = ProductSerializer
     # queryset = ProductSerializer.Meta.model.objects.filter(status=True)
 
